@@ -1,5 +1,4 @@
 import './App.css';
-import Login from './components/Login/Login';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import Home from './components/Home/Home';
 import HeroSearch from './components/HeroSearch/HeroSearch';
@@ -8,7 +7,6 @@ import { useState } from 'react';
 import  TeamContext  from './context/TeamContext';
 import DetailsCharacter from './components/DetailsCharacter/DetailsCharacter';
 import Header from './components/Header/Header';
-import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   const [user, setUser] = useState(() => {
@@ -28,17 +26,15 @@ function App() {
           <Router>
             <Header />
             <Switch>
-              <Route exact path="/login">
-                <Login />
-              </Route>
+             
               <Route exact path="/home">
-                <PrivateRoute page={<Home/> } />
+                {<Home/> } 
               </Route>
               <Route exact path="/search">
-                <PrivateRoute page={<HeroSearch/> } />
+                {<HeroSearch/> } 
               </Route>
               <Route exact path="/details/:id">
-                <PrivateRoute page={<DetailsCharacter/> } />
+                 {<DetailsCharacter/> }
               </Route>
               <Redirect exact from="/" to="/home" />
             </Switch>
